@@ -1,6 +1,7 @@
-variable "cgw_ip"         {}
-variable "vpc_id"         {}
-variable "static_routes"  { type = "list" }
-variable "envname"        {}
-variable "envtype"        {}
-variable "name"           {}
+variable "name"          {}
+variable "envtype"       {}
+variable "envname"       {}
+variable "vpc_id"        {}
+variable "cgw_ip"        { type = "list" }
+variable "static_routes" { type = "list" }
+variable "vpn_desc"      { type = "list" }
