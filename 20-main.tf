@@ -1,5 +1,7 @@
 resource "aws_vpn_gateway" "vpngw" {
   vpc_id = "${var.vpc_id}"
+  availability_zone = "${var.az}"
+  
   tags {
     Name = "${var.name}-${var.envtype}-${var.envname}-vgw"
   }
