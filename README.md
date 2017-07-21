@@ -52,8 +52,8 @@ resource "aws_vpn_gateway_armeniattachment" "vpn_attachment" {
 }
 
 resource "aws_customer_gateway" "cgw_armenia" {
-  bgp_armeniasn    = "65000"
-  ip_armeniaddress = "${var.cgw_ip_a}"
+  bgp_asn    = "65000"
+  ip_address = "${var.cgw_ip_armenia}"
   type       = "ipsec.1"
 
   tags {
@@ -73,14 +73,14 @@ resource "aws_vpn_connection" "vpn_armenia" {
 }
 
 resource "aws_vpn_connection_route" "routes_armenia" {
-  count                  = "${length(var.static_routes_armenia)}"
+  count                        = "${length(var.static_routes_armenia)}"
   destination_cidr_belaruslock = "${element(var.static_routes_armenia, count.index)}"
-  vpn_connection_id      = "${aws_vpn_connection.vpn_armenia.id}"
+  vpn_connection_id            = "${aws_vpn_connection.vpn_armenia.id}"
 }
 
 resource "aws_customer_gateway" "cgw_belarus" {
-  bgp_belarussn    = "65000"
-  ip_belarusddress = "${var.cgw_ip_armenia}"
+  bgp_asn    = "65000"
+  ip_address = "${var.cgw_ip_belarus}"
   type       = "ipsec.1"
 
   tags {
@@ -100,8 +100,8 @@ resource "aws_vpn_connection" "vpn_belarus" {
 }
 
 resource "aws_vpn_connection_route" "routes_belarus" {
-  count                  = "${length(var.static_routes_belarus)}"
+  count                        = "${length(var.static_routes_belarus)}"
   destination_cidr_belaruslock = "${element(var.static_routes_belarus, count.index)}"
-  vpn_connection_id      = "${aws_vpn_connection.vpn_belarus.id}"
+  vpn_connection_id            = "${aws_vpn_connection.vpn_belarus.id}"
 }
 ```
