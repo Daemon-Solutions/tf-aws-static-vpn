@@ -46,7 +46,7 @@ resource "aws_vpn_gateway" "vpngw" {
   }
 }
 
-resource "aws_vpn_gateway_armeniattachment" "vpn_attachment" {
+resource "aws_vpn_gateway_attachment" "vpn_attachment" {
   vpc_id         = "${data.terraform_remote_state.vpc.vpc_id}"
   vpn_gateway_id = "${aws_vpn_gateway.vpngw.id}"
 }
